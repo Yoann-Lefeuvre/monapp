@@ -1,0 +1,26 @@
+<div
+  class="face-snap-card"
+  [ngClass]="{ snapped: snapText == 'oops un snap !' }"
+>
+  <h1>{{ faceSnap.title | titlecase }}</h1>
+  <a routerLink="/facesnaps">Retour</a>
+  <p>{{ 4215 | currency: "EUR":"code" }}</p>
+  <p>{{ 4346234.36 | number: "1.0-1" }}</p>
+
+  <p>
+    Date de création :
+    {{ faceSnap.createdDate | date: "le dd/MMMM/yyy à HH:mm" }}
+  </p>
+  <img [src]="faceSnap.imageUrl" [alt]="faceSnap.title" />
+  <p>{{ faceSnap.description }}</p>
+  <p *ngIf="faceSnap.location == 'Nantes'">
+    Photo prise à {{ faceSnap.location }}
+  </p>
+  <p>
+    <button (click)="onSnap()">{{ snapText }}</button>
+    Nombre de snaps😃:
+    <span [ngStyle]="{ color: 'rgb(0,' + faceSnap.snaps + ',0)' }">{{
+      faceSnap.snaps
+    }}</span>
+  </p>
+</div>
