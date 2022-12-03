@@ -21,7 +21,7 @@ export class FaceSnapsService {
       createdDate: new Date(),
       imageUrl:
         'https://cdn.pixabay.com/photo/2012/03/01/00/55/garden-19830_960_720.jpg',
-      snaps: 0,
+      snaps: 5,
       location: 'La montagne',
     },
     {
