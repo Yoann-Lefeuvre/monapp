@@ -18,7 +18,7 @@
     Photo prise à {{ faceSnap.location }}
   </p>
   <p>
-    <button (click)="onSnap()">{{ snapText }}</button>
+    <button (click)="onSnap(faceSnap.id)">{{ snapText }}</button>
     Nombre de snaps😃:
     <span [ngStyle]="{ color: 'rgb(0,' + faceSnap.snaps + ',0)' }">{{
       faceSnap.snaps
