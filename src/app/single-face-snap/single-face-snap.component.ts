@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FaceSnap } from '../models/face-snap.model';
 import { FaceSnapsService } from '../services/face-snaps.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-single-face-snap',
@@ -9,7 +10,8 @@ import { FaceSnapsService } from '../services/face-snaps.service';
   styleUrls: ['./single-face-snap.component.scss'],
 })
 export class SingleFaceSnapComponent implements OnInit {
-  faceSnap!: FaceSnap;
+  //faceSnap!: FaceSnap;
+  faceSnap$!: Observable<FaceSnap>;
 
   snapped!: boolean;
   snapText!: string;
@@ -23,17 +25,17 @@ export class SingleFaceSnapComponent implements OnInit {
     this.snapped = false;
     this.snapText = 'Oh snap !';
     const faceSnapId = +this.route.snapshot.params['id'];
-    this.faceSnap = this.faceSnapsService.getFaceSnapById(faceSnapId);
+    this.faceSnap$ = this.faceSnapsService.getFaceSnapById(faceSnapId);
   }
   onSnap() {
-    if (!this.snapped) {
-      this.snapText = 'oops un snap !';
-      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
-      this.snapped = true;
-    } else {
-      this.snapText = 'Oh snap !';
-      this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
-      this.snapped = false;
-    }
+    // if (!this.snapped) {
+    //   this.snapText = 'oops un snap !';
+    //   this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'snap');
+    //   this.snapped = true;
+    // } else {
+    //   this.snapText = 'Oh snap !';
+    //   this.faceSnapsService.snapFaceSnapById(this.faceSnap.id, 'unsnap');
+    //   this.snapped = false;
+    // }
   }
 }
